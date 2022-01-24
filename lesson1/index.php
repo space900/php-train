@@ -211,12 +211,17 @@
     <br>
     <!-- Логические операторы -->
     <?php 
-        include '../lesson21/index.php';
+        // include '../lesson21/index.php';
     ?>
     <br>
     <!-- Тернарные операторы -->
     <?php 
-        include '../lesson22/index.php';
+        // include '../lesson22/index.php';
+    ?>
+    <br>
+    <!-- Switch Case -->
+    <?php 
+        include '../lesson23/index.php';
     ?>
 
     
