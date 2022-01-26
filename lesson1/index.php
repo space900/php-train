@@ -345,6 +345,7 @@ function ddd($code, string $debug_method = 'print'): bool {
         include '../lesson47/index.php';
     ?>
 
+ 
 
 
 

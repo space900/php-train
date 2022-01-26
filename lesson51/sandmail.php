@@ -1,31 +1,54 @@
 <?php
-    // if($_POST['captcha'] != 56) {
-    //     header('location: index.php');
-    //     exit;
-    // }
+    // // if($_POST['captcha'] != 56) {
+    // //     header('location: index.php');
+    // //     exit;
+    // // }
+    // function ddd($code, string $debug_method = 'print'): bool {
 
-    if($_POST['subject'] == 1) {
+    //     ini_set('error_reporting', E_ALL);
+    //     ini_set('display_errors', 1);
+    //     ini_set('display_startup_errors', 1);
+    //     echo "<pre style='background: black; color: green; padding: 25px;'>";
+    //     switch ($debug_method) {
+    //         case 'print' :
+    //             print_r($code);
+    //             break;
+    //         case 'dump' :
+    //             var_dump($code);
+    //             break;
+    //         case 'export' :
+    //             var_export($code);
+    //             break;
+    //     }
+    //     echo '</pre>';
+    //     return true;
+    // }
+    // ddd($_POST)
+
+    $subject = $_POST['subject'];
+    $message = htmlspecialchars($_POST['message']);
+    $message = urldecode($message);
+    $message = trim($message);
+    $email = $_POST['email'];
+
+    if($subject == 1) {
         $subject = 'Вопрос по теме';
-    } elseif($_POST['subject'] == 2) {
+    } elseif($subject == 2) {
         $subject = 'Вопрос не по теме';
     } else {
         $subject = 'Вопрос по теме';
     }
 
-    $to = "testaccforphp@gmail.com";
-    $from = trim($_POST['email']);
-
-    $message = htmlspecialchars($_POST['message']);
-    $message = urldecode($message);
-    $message = trim($message);
-
-    // $headers = "From: $from" . "\r\n" .
-    // "Reply-To: $from" . "\r\n" .
-    // "X-Mailer: PHP/" . phpversion();
-
-    if(mail($to, $subject, $message, $headers)) {
-        echo 'Письмо отправлено';
+    $response = mail($email, $subject, $message);
+    ddd($response);
+    if($response) {
+        $response = 'Письмо отправлено';
     } else {
-        echo 'Письмо не отправлено';
+        $response = 'Письмо не отправлено';
     }
+
+
+    $output = ['subject' => $subject, 'message' => $message, 'email' => $email, 'response' => $response];
+    exit(json_encode($output));
 ?>
+

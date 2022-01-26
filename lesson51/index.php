@@ -20,6 +20,10 @@
         <input type="email" name="email" placeholder="Введите email" minlength="2" maxlength="50" required>
         <textarea name="message" placeholder="Введите сообщение" maxlength="150" reuqired></textarea>
         <input type="submit" value="Отправить письмо">
+        <div id="result"></div>
     </form>
+    <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
+
+
